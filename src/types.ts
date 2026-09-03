@@ -1,12 +1,12 @@
 export type Language = 'ru' | 'en';
 
-export type SectionId = 'about' | 'projects' | 'articles' | 'events' | 'contact';
+export type SectionId = 'industrial-creator' | 'about' | 'products' | 'conferences' | 'articles' | 'contact' | 'projects' | 'events';
 
 export interface NavItem {
   id: SectionId;
   labelRu: string;
   labelEn: string;
-  iconName: string;
+  iconName?: string;
 }
 
 export interface SectionBlueprint {

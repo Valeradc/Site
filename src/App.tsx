@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
-import { ProjectsSection } from './components/ProjectsSection';
-import { ArticlesSection } from './components/ArticlesSection';
+import { ProductsSection } from './components/ProductsSection';
 import { EventsSection } from './components/EventsSection';
+import { ArticlesSection } from './components/ArticlesSection';
 import { ContactSection } from './components/ContactSection';
 import { BlueprintOverlay } from './components/BlueprintOverlay';
 import { Footer } from './components/Footer';
@@ -12,14 +12,14 @@ import { Language, SectionId } from './types';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('ru');
-  const [activeSection, setActiveSection] = useState<SectionId>('about');
+  const [activeSection, setActiveSection] = useState<SectionId>('industrial-creator');
   const [showBlueprintMode, setShowBlueprintMode] = useState<boolean>(false);
   const [blueprintModalOpen, setBlueprintModalOpen] = useState<boolean>(false);
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections: SectionId[] = ['about', 'projects', 'articles', 'events', 'contact'];
+      const sections: SectionId[] = ['industrial-creator', 'about', 'products', 'conferences', 'articles', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -80,25 +80,25 @@ export default function App() {
           showBlueprintMode={showBlueprintMode}
         />
 
-        {/* Section 2: Projects (Hardware, Telegram Bot, Podcast) */}
-        <ProjectsSection
+        {/* Section 2: Products */}
+        <ProductsSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
         />
 
-        {/* Section 3: Articles & Insights */}
-        <ArticlesSection
-          currentLang={currentLang}
-          showBlueprintMode={showBlueprintMode}
-        />
-
-        {/* Section 4: Speaking & Events */}
+        {/* Section 3: Conferences */}
         <EventsSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
         />
 
-        {/* Section 5: Contact & Collaboration */}
+        {/* Section 4: Articles */}
+        <ArticlesSection
+          currentLang={currentLang}
+          showBlueprintMode={showBlueprintMode}
+        />
+
+        {/* Section 5: Contact */}
         <ContactSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}

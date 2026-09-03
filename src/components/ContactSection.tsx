@@ -88,13 +88,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
               <div className="space-y-3">
                 <a
-                  href="https://t.me/valera_mechanic"
+                  href="https://t.me/Valera_dc"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-between p-2.5 border border-neutral-200 hover:border-black transition-colors text-black"
                 >
                   <span className="font-semibold">Telegram</span>
-                  <span className="text-neutral-500">@valera_mechanic ↗</span>
+                  <span className="text-neutral-500">@Valera_dc ↗</span>
                 </a>
 
                 <div className="flex items-center justify-between p-2.5 border border-neutral-200 text-black">

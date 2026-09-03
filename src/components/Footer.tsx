@@ -63,8 +63,8 @@ export const Footer: React.FC<FooterProps> = ({
               {currentLang === 'ru' ? 'КОНТАКТЫ' : 'CONTACT'}
             </div>
             <div className="text-[11px]">
-              <a href="https://t.me/valera_mechanic" target="_blank" rel="noreferrer" className="hover:text-black block">
-                Telegram: @valera_mechanic
+              <a href={GENERAL_INFO.telegramUrl} target="_blank" rel="noreferrer" className="hover:text-black block">
+                Telegram: {GENERAL_INFO.telegram}
               </a>
               <div className="text-neutral-500 truncate">{GENERAL_INFO.email}</div>
             </div>

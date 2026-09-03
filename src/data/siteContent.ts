@@ -8,15 +8,16 @@ import {
 } from '../types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'about', labelRu: 'Обо мне', labelEn: 'About', iconName: 'User' },
-  { id: 'projects', labelRu: 'Проекты', labelEn: 'Projects', iconName: 'Cpu' },
-  { id: 'articles', labelRu: 'Статьи', labelEn: 'Articles', iconName: 'FileText' },
-  { id: 'events', labelRu: 'Выступления', labelEn: 'Speaking', iconName: 'Calendar' },
-  { id: 'contact', labelRu: 'Контакты', labelEn: 'Contact', iconName: 'Send' }
+  { id: 'industrial-creator', labelRu: 'INDUSTRIAL CREATOR', labelEn: 'INDUSTRIAL CREATOR' },
+  { id: 'about', labelRu: 'ОБО МНЕ', labelEn: 'ABOUT ME' },
+  { id: 'products', labelRu: 'ПРОДУКТЫ', labelEn: 'PRODUCTS' },
+  { id: 'conferences', labelRu: 'КОНФЕРЕНЦИИ', labelEn: 'CONFERENCES' },
+  { id: 'articles', labelRu: 'СТАТЬИ', labelEn: 'ARTICLES' },
+  { id: 'contact', labelRu: 'КОНТАКТЫ', labelEn: 'CONTACT' }
 ];
 
 export const GENERAL_INFO = {
-  nameRu: 'ВАЛЕРИЙ ДОЦЕНКО',
+  nameRu: 'ДОЦЕНКО ВАЛЕРИЙ',
   nameEn: 'VALERIY DOTSENKO',
   titleRu: 'ТЕХНИК-МЕХАНИК • МАСТЕР ПРОИЗВОДСТВЕННОГО ОБУЧЕНИЯ',
   titleEn: 'MECHANICAL TECHNICIAN • VOCATIONAL INSTRUCTOR',
@@ -25,10 +26,10 @@ export const GENERAL_INFO = {
   locationRu: 'Россия',
   locationEn: 'Russia',
   email: 'docenkovaler@gmail.com',
-  telegram: '@valera_mechanic',
-  telegramUrl: 'https://t.me/valera_mechanic',
-  channel: 't.me/struzhka_mashinostroenie',
-  channelUrl: 'https://t.me/valera_mechanic',
+  telegram: '@Valera_dc',
+  telegramUrl: 'https://t.me/Valera_dc',
+  channel: 't.me/Valera_dc',
+  channelUrl: 'https://t.me/Valera_dc',
   age: 21,
   diplomaRu: 'Красный диплом (специальность 15.02.08)',
   diplomaEn: 'Honors Degree (Mechanical Technology 15.02.08)',

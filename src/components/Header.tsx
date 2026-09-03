@@ -30,10 +30,10 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Brand / Name in Tracked Swiss Caps */}
           <div className="space-y-0.5">
             <a 
-              href="#about"
+              href="#industrial-creator"
               onClick={(e) => {
                 e.preventDefault();
-                onNavigate('about');
+                onNavigate('industrial-creator');
               }}
               className="text-xs sm:text-sm font-medium tracking-[0.25em] uppercase text-black hover:opacity-70 transition-opacity"
             >
@@ -44,21 +44,20 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-          {/* Desktop 5-Item Navigation */}
-          <nav className="hidden md:flex items-center space-x-7">
-            {NAV_ITEMS.map((item, idx) => {
+          {/* Desktop 6-Item Navigation */}
+          <nav className="hidden lg:flex items-center space-x-5 xl:space-x-6">
+            {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`text-xs tracking-[0.1em] uppercase transition-all pb-0.5 ${
+                  className={`text-xs tracking-[0.12em] uppercase transition-all pb-0.5 ${
                     isActive
                       ? 'text-black font-semibold border-b border-black'
                       : 'text-neutral-500 hover:text-black'
                   }`}
                 >
-                  <span className="text-[10px] text-neutral-400 mr-1.5 font-mono">0{idx + 1}</span>
                   {currentLang === 'ru' ? item.labelRu : item.labelEn}
                 </button>
               );
@@ -90,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Mobile hamburger */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex lg:hidden items-center space-x-2">
             <button
               onClick={onToggleLang}
               className="px-2 py-1 text-[10px] font-mono border border-neutral-300 text-black"
@@ -109,8 +108,8 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden pt-4 pb-2 mt-4 border-t border-neutral-200 space-y-2">
-            {NAV_ITEMS.map((item, idx) => (
+          <div className="lg:hidden pt-4 pb-2 mt-4 border-t border-neutral-200 space-y-2">
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 onClick={() => {
@@ -121,7 +120,6 @@ export const Header: React.FC<HeaderProps> = ({
                   activeSection === item.id ? 'font-bold text-black' : 'text-neutral-600'
                 }`}
               >
-                <span className="font-mono text-neutral-400 mr-2">0{idx + 1}</span>
                 {currentLang === 'ru' ? item.labelRu : item.labelEn}
               </button>
             ))}
