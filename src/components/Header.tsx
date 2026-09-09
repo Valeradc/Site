@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-5xl mx-auto px-6 sm:px-8 py-4">
         <div className="flex items-center justify-between">
           
-          {/* Brand / Name */}
+          {/* Brand / Logo */}
           <div>
             <a 
               href="#industrial-creator"
@@ -42,17 +42,14 @@ export const Header: React.FC<HeaderProps> = ({
                 e.preventDefault();
                 handleNavClick('industrial-creator');
               }}
-              className="text-sm sm:text-base font-semibold tracking-tight text-neutral-900 hover:text-neutral-600 transition-colors block"
+              className="text-sm sm:text-base font-semibold tracking-wider uppercase text-neutral-900 hover:text-neutral-600 transition-colors block"
             >
-              {currentLang === 'ru' ? GENERAL_INFO.nameRu : GENERAL_INFO.nameEn}
+              INDUSTRIAL CREATOR
             </a>
-            <div className="text-xs text-neutral-500 font-normal">
-              {currentLang === 'ru' ? 'Техник-механик • Наставник' : 'Mechanical Technician • Instructor'}
-            </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-7">
+          <nav className="hidden md:flex items-center space-x-6 sm:space-x-8">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -61,8 +58,8 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNavClick(item.id)}
                   className={`text-sm transition-colors ${
                     isActive
-                      ? 'text-neutral-900 font-semibold border-b-2 border-neutral-900 pb-0.5'
-                      : 'text-neutral-500 hover:text-neutral-900 font-normal pb-0.5'
+                      ? 'text-neutral-900 font-medium'
+                      : 'text-neutral-700 hover:text-neutral-950 font-normal'
                   }`}
                 >
                   {currentLang === 'ru' ? item.labelRu : item.labelEn}

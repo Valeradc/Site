@@ -8,13 +8,12 @@ import {
 } from '../types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'industrial-creator', labelRu: 'INDUSTRIAL CREATOR', labelEn: 'INDUSTRIAL CREATOR' },
-  { id: 'about', labelRu: 'ОБО МНЕ', labelEn: 'ABOUT ME' },
-  { id: 'novosibirsk', labelRu: 'НОВОСИБИРСК', labelEn: 'NOVOSIBIRSK' },
-  { id: 'products', labelRu: 'ПРОДУКТЫ', labelEn: 'PRODUCTS' },
-  { id: 'conferences', labelRu: 'КОНФЕРЕНЦИИ', labelEn: 'CONFERENCES' },
-  { id: 'articles', labelRu: 'СТАТЬИ', labelEn: 'ARTICLES' },
-  { id: 'contact', labelRu: 'КОНТАКТЫ', labelEn: 'CONTACT' }
+  { id: 'about', labelRu: 'Обо мне', labelEn: 'About me' },
+  { id: 'novosibirsk', labelRu: 'Новосибирск', labelEn: 'Novosibirsk' },
+  { id: 'products', labelRu: 'Продукты', labelEn: 'Products' },
+  { id: 'articles', labelRu: 'Статьи', labelEn: 'Articles' },
+  { id: 'contact', labelRu: 'Контакты', labelEn: 'Contact' },
+  { id: 'conferences', labelRu: 'Конференции', labelEn: 'Conferences' }
 ];
 
 export const GENERAL_INFO = {
