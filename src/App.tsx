@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
+import { NovosibirskSection } from './components/NovosibirskSection';
 import { ProductsSection } from './components/ProductsSection';
 import { EventsSection } from './components/EventsSection';
 import { ArticlesSection } from './components/ArticlesSection';
 import { ContactSection } from './components/ContactSection';
 import { BlueprintOverlay } from './components/BlueprintOverlay';
 import { Footer } from './components/Footer';
+import { CommandPaletteModal } from './components/CommandPaletteModal';
 import { Language, SectionId } from './types';
 
 export default function App() {
@@ -15,11 +17,13 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<SectionId>('industrial-creator');
   const [showBlueprintMode, setShowBlueprintMode] = useState<boolean>(false);
   const [blueprintModalOpen, setBlueprintModalOpen] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(false);
+  const [cmdPaletteOpen, setCmdPaletteOpen] = useState<boolean>(false);
 
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections: SectionId[] = ['industrial-creator', 'about', 'products', 'conferences', 'articles', 'contact'];
+      const sections: SectionId[] = ['industrial-creator', 'about', 'novosibirsk', 'products', 'conferences', 'articles', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -52,9 +56,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 font-sans selection:bg-black selection:text-white">
+    <div className={`min-h-screen transition-colors duration-300 font-sans selection:bg-neutral-500 selection:text-white ${
+      isDark ? 'bg-[#090a0f] text-white' : 'bg-white text-neutral-900'
+    }`}>
       
-      {/* Sticky Navigation Header with 5-item menu & toggles */}
+      {/* Sticky Browser Chrome & Navigation Header */}
       <Header
         currentLang={currentLang}
         onToggleLang={handleToggleLang}
@@ -62,6 +68,9 @@ export default function App() {
         onNavigate={handleNavigate}
         showBlueprintMode={showBlueprintMode}
         onToggleBlueprintMode={() => setShowBlueprintMode(!showBlueprintMode)}
+        isDark={isDark}
+        onToggleTheme={() => setIsDark(!isDark)}
+        onOpenCommandPalette={() => setCmdPaletteOpen(true)}
       />
 
       {/* Main Content Area */}
@@ -72,36 +81,49 @@ export default function App() {
           currentLang={currentLang}
           onNavigate={handleNavigate}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
-        {/* Section 1: About Me */}
+        {/* Section 02: About Me */}
         <AboutSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
-        {/* Section 2: Products */}
+        {/* Section 02.5: Novosibirsk Geography & Workshops Map */}
+        <NovosibirskSection
+          currentLang={currentLang}
+          showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
+        />
+
+        {/* Section 03: Products */}
         <ProductsSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
-        {/* Section 3: Conferences */}
+        {/* Section 04: Conferences */}
         <EventsSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
-        {/* Section 4: Articles */}
+        {/* Section 05: Articles */}
         <ArticlesSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
-        {/* Section 5: Contact */}
+        {/* Section 06: Contact */}
         <ContactSection
           currentLang={currentLang}
           showBlueprintMode={showBlueprintMode}
+          isDark={isDark}
         />
 
       </main>
@@ -111,13 +133,27 @@ export default function App() {
         currentLang={currentLang}
         onNavigate={handleNavigate}
         onOpenBlueprint={() => setBlueprintModalOpen(true)}
+        isDark={isDark}
       />
 
-      {/* Dedicated Comprehensive Copywriting & Structure Blueprint Modal */}
+      {/* Command Palette (⌘K) */}
+      <CommandPaletteModal
+        isOpen={cmdPaletteOpen}
+        onClose={() => setCmdPaletteOpen(false)}
+        onNavigate={handleNavigate}
+        isDark={isDark}
+        onToggleTheme={() => setIsDark(!isDark)}
+        currentLang={currentLang}
+        onToggleLang={handleToggleLang}
+        onOpenBlueprint={() => setBlueprintModalOpen(true)}
+      />
+
+      {/* Editorial Specification Overlay */}
       <BlueprintOverlay
         isOpen={blueprintModalOpen}
         onClose={() => setBlueprintModalOpen(false)}
         currentLang={currentLang}
+        isDark={isDark}
       />
 
     </div>

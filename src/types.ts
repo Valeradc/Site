@@ -1,6 +1,29 @@
 export type Language = 'ru' | 'en';
 
-export type SectionId = 'industrial-creator' | 'about' | 'products' | 'conferences' | 'articles' | 'contact' | 'projects' | 'events';
+export type SectionId = 'industrial-creator' | 'about' | 'novosibirsk' | 'products' | 'conferences' | 'articles' | 'contact' | 'projects' | 'events';
+
+export interface NovosibirskLocation {
+  id: string;
+  lat: number;
+  lng: number;
+  titleRu: string;
+  titleEn: string;
+  subtitleRu: string;
+  subtitleEn: string;
+  descriptionRu: string;
+  descriptionEn: string;
+  districtRu: string;
+  districtEn: string;
+  category: 'work' | 'education' | 'landmark' | 'nature';
+  categoryLabelRu: string;
+  categoryLabelEn: string;
+  iconEmoji: string;
+  tagsRu: string[];
+  tagsEn: string[];
+  accentColor: string;
+  metricsRu?: string;
+  metricsEn?: string;
+}
 
 export interface NavItem {
   id: SectionId;

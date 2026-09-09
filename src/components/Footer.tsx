@@ -7,40 +7,44 @@ interface FooterProps {
   currentLang: Language;
   onNavigate: (sectionId: SectionId) => void;
   onOpenBlueprint: () => void;
+  isDark: boolean;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   currentLang,
   onNavigate,
-  onOpenBlueprint
+  onOpenBlueprint,
+  isDark
 }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="border-t border-black bg-white py-12 text-xs font-mono">
+    <footer className={`border-t py-12 text-xs font-mono transition-colors duration-300 ${
+      isDark ? 'border-white/10 bg-[#07080b] text-neutral-400' : 'border-[#d2d2d7] bg-[#fbfbfd] text-[#6e6e73]'
+    }`}>
       <div className="max-w-5xl mx-auto px-6 sm:px-8 space-y-10">
         
-        {/* Swiss 4-Column Footer Grid (like the photo) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-neutral-600">
+        {/* Apple 4-Column Footer Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           
           {/* Col 1 */}
           <div className="space-y-1">
-            <div className="font-semibold text-black uppercase tracking-wider">
+            <div className={`font-semibold uppercase tracking-wider ${isDark ? 'text-white' : 'text-[#1d1d1f]'}`}>
               {currentLang === 'ru' ? GENERAL_INFO.nameRu : GENERAL_INFO.nameEn}
             </div>
-            <div className="text-[11px] text-neutral-500">
+            <div className={`text-[11px] ${isDark ? 'text-neutral-400' : 'text-[#86868b]'}`}>
               {currentLang === 'ru' ? 'Техник-механик (15.02.08)' : 'Mechanical Technician'}
             </div>
-            <div className="text-[11px] text-neutral-500">
+            <div className={`text-[11px] ${isDark ? 'text-neutral-400' : 'text-[#86868b]'}`}>
               {currentLang === 'ru' ? 'Мастер производственного обучения' : 'Vocational Instructor'}
             </div>
           </div>
 
           {/* Col 2 */}
           <div className="space-y-1">
-            <div className="font-semibold text-black uppercase tracking-wider">
+            <div className={`font-semibold uppercase tracking-wider ${isDark ? 'text-white' : 'text-[#1d1d1f]'}`}>
               {currentLang === 'ru' ? 'НАВИГАЦИЯ' : 'SECTIONS'}
             </div>
             <div className="space-y-0.5 text-[11px]">
@@ -48,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <div key={item.id}>
                   <button
                     onClick={() => onNavigate(item.id)}
-                    className="hover:text-black transition-colors text-left"
+                    className={`transition-colors text-left ${isDark ? 'hover:text-white' : 'hover:text-[#1d1d1f]'}`}
                   >
                     {currentLang === 'ru' ? item.labelRu : item.labelEn}
                   </button>
@@ -59,31 +63,31 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3 */}
           <div className="space-y-1">
-            <div className="font-semibold text-black uppercase tracking-wider">
+            <div className={`font-semibold uppercase tracking-wider ${isDark ? 'text-white' : 'text-[#1d1d1f]'}`}>
               {currentLang === 'ru' ? 'КОНТАКТЫ' : 'CONTACT'}
             </div>
             <div className="text-[11px]">
-              <a href={GENERAL_INFO.telegramUrl} target="_blank" rel="noreferrer" className="hover:text-black block">
+              <a href={GENERAL_INFO.telegramUrl} target="_blank" rel="noreferrer" className={`block ${isDark ? 'hover:text-white' : 'hover:text-[#1d1d1f]'}`}>
                 Telegram: {GENERAL_INFO.telegram}
               </a>
-              <div className="text-neutral-500 truncate">{GENERAL_INFO.email}</div>
+              <div className={`truncate ${isDark ? 'text-neutral-400' : 'text-[#86868b]'}`}>{GENERAL_INFO.email}</div>
             </div>
           </div>
 
           {/* Col 4 */}
           <div className="space-y-1">
-            <div className="font-semibold text-black uppercase tracking-wider">
+            <div className={`font-semibold uppercase tracking-wider ${isDark ? 'text-white' : 'text-[#1d1d1f]'}`}>
               {currentLang === 'ru' ? 'СПЕЦИФИКАЦИЯ' : 'DOCUMENT'}
             </div>
             <div className="text-[11px] space-y-1">
               <button
                 onClick={onOpenBlueprint}
-                className="text-black font-semibold underline hover:opacity-70 text-left block"
+                className={`font-semibold underline hover:opacity-75 text-left block ${isDark ? 'text-white' : 'text-[#1d1d1f]'}`}
               >
                 {currentLang === 'ru' ? 'Открыть ТЗ и бриф' : 'Open Editorial Spec'}
               </button>
-              <div className="text-[10px] text-neutral-400">
-                Swiss Grid v2.4 (B&W)
+              <div className={`text-[10px] ${isDark ? 'text-neutral-400' : 'text-[#86868b]'}`}>
+                Apple San Francisco Edition
               </div>
             </div>
           </div>
@@ -91,14 +95,18 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-neutral-400">
+        <div className={`pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] ${
+          isDark ? 'border-white/10 text-neutral-400' : 'border-[#e5e5ea] text-[#86868b]'
+        }`}>
           <div>
             © {new Date().getFullYear()} {currentLang === 'ru' ? GENERAL_INFO.nameRu : GENERAL_INFO.nameEn}.
           </div>
 
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-1 text-black font-semibold hover:opacity-70 uppercase tracking-widest"
+            className={`flex items-center gap-1 font-semibold hover:opacity-75 uppercase tracking-widest ${
+              isDark ? 'text-white' : 'text-[#1d1d1f]'
+            }`}
           >
             <span>{currentLang === 'ru' ? 'Наверх' : 'Top'}</span>
             <ArrowUp className="w-3 h-3" />

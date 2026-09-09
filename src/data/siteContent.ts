@@ -10,6 +10,7 @@ import {
 export const NAV_ITEMS: NavItem[] = [
   { id: 'industrial-creator', labelRu: 'INDUSTRIAL CREATOR', labelEn: 'INDUSTRIAL CREATOR' },
   { id: 'about', labelRu: 'ОБО МНЕ', labelEn: 'ABOUT ME' },
+  { id: 'novosibirsk', labelRu: 'НОВОСИБИРСК', labelEn: 'NOVOSIBIRSK' },
   { id: 'products', labelRu: 'ПРОДУКТЫ', labelEn: 'PRODUCTS' },
   { id: 'conferences', labelRu: 'КОНФЕРЕНЦИИ', labelEn: 'CONFERENCES' },
   { id: 'articles', labelRu: 'СТАТЬИ', labelEn: 'ARTICLES' },
@@ -23,8 +24,8 @@ export const GENERAL_INFO = {
   titleEn: 'MECHANICAL TECHNICIAN • VOCATIONAL INSTRUCTOR',
   taglineRu: 'Практик у станка, красный диплом, наставник нового поколения станочников.',
   taglineEn: 'Hands-on machinist, honors graduate, mentor to the next generation of engineers.',
-  locationRu: 'Россия',
-  locationEn: 'Russia',
+  locationRu: 'Новосибирск, Россия',
+  locationEn: 'Novosibirsk, Russia',
   email: 'docenkovaler@gmail.com',
   telegram: '@Valera_dc',
   telegramUrl: 'https://t.me/Valera_dc',
