@@ -9,11 +9,10 @@ import {
 
 export const NAV_ITEMS: NavItem[] = [
   { id: 'about', labelRu: 'Обо мне', labelEn: 'About me' },
-  { id: 'novosibirsk', labelRu: 'Новосибирск', labelEn: 'Novosibirsk' },
   { id: 'products', labelRu: 'Продукты', labelEn: 'Products' },
+  { id: 'conferences', labelRu: 'Конференции', labelEn: 'Conferences' },
   { id: 'articles', labelRu: 'Статьи', labelEn: 'Articles' },
-  { id: 'contact', labelRu: 'Контакты', labelEn: 'Contact' },
-  { id: 'conferences', labelRu: 'Конференции', labelEn: 'Conferences' }
+  { id: 'contact', labelRu: 'Контакты', labelEn: 'Contact' }
 ];
 
 export const GENERAL_INFO = {
