@@ -25,42 +25,40 @@ export const Hero: React.FC<HeroProps> = ({
     >
       <div className="max-w-5xl mx-auto w-full flex flex-col items-center justify-center space-y-10 sm:space-y-14 my-auto">
         
-        {/* Main Display Headline */}
-        <h1 className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-[0.06em] sm:tracking-[0.08em] uppercase select-none transition-colors ${
+        {/* Main Display Headline with Thin, iPhone-like Typo */}
+        <h1 className={`text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-[150] sm:font-[200] tracking-[0.15em] sm:tracking-[0.22em] uppercase select-none transition-colors ${
           isDark ? 'text-white' : 'text-neutral-900'
         }`}>
           INDUSTRIAL CREATOR
         </h1>
 
-        {/* Minimalist Action Controls (Exact Replica of User Reference) */}
+        {/* Minimalist Action Controls */}
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 pt-2">
           
           {/* "Связаться" Pill Button */}
           <button
             onClick={() => onNavigate('contact')}
-            className={`px-8 py-3.5 rounded-full text-sm font-medium transition-all active:scale-[0.98] flex items-center gap-2.5 shadow-sm ${
+            className={`px-7 py-3 rounded-full text-sm font-light tracking-wide transition-all active:scale-[0.98] flex items-center gap-2.5 ${
               isDark
-                ? 'bg-white text-neutral-950 hover:bg-neutral-200'
-                : 'bg-[#1d1d1f] text-white hover:bg-black'
+                ? 'bg-white text-neutral-950 hover:bg-neutral-100'
+                : 'bg-neutral-900 text-white hover:bg-black'
             }`}
           >
-            <Send className={`w-3.5 h-3.5 rotate-12 ${
-              isDark ? 'fill-neutral-950 stroke-neutral-950' : 'fill-white stroke-white'
-            }`} />
+            <Send className="w-3.5 h-3.5 rotate-12 stroke-[1.2]" />
             <span>{currentLang === 'ru' ? 'Связаться' : 'Get in touch'}</span>
           </button>
 
           {/* Clean "Смотреть проекты ↓" Link */}
           <button
             onClick={() => onNavigate('products')}
-            className={`text-sm sm:text-base font-normal transition-colors flex items-center gap-1.5 ${
+            className={`text-sm sm:text-base font-light tracking-wide transition-colors flex items-center gap-1.5 ${
               isDark 
                 ? 'text-neutral-300 hover:text-white' 
                 : 'text-neutral-700 hover:text-neutral-950'
             }`}
           >
             <span>{currentLang === 'ru' ? 'Смотреть проекты' : 'View projects'}</span>
-            <ArrowDown className="w-4 h-4" />
+            <ArrowDown className="w-4 h-4 stroke-[1.2]" />
           </button>
 
         </div>
