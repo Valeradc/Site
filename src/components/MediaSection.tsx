@@ -1,18 +1,18 @@
 import React from 'react';
 import { Language } from '../types';
 
-interface ArticlesSectionProps {
+interface MediaSectionProps {
   currentLang: Language;
   isDark: boolean;
 }
 
-export const ArticlesSection: React.FC<ArticlesSectionProps> = ({
+export const MediaSection: React.FC<MediaSectionProps> = ({
   currentLang,
   isDark
 }) => {
   return (
     <section 
-      id="articles" 
+      id="media" 
       className={`py-24 sm:py-32 border-b transition-colors duration-200 ${
         isDark ? 'border-neutral-800 bg-[#090a0f] text-white' : 'border-neutral-200 bg-white text-neutral-900'
       }`}
@@ -24,12 +24,12 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({
           <h2 className={`text-xs uppercase tracking-[0.25em] font-light ${
             isDark ? 'text-neutral-400' : 'text-neutral-500'
           }`}>
-            {currentLang === 'ru' ? 'Раздел 02' : 'Section 02'}
+            {currentLang === 'ru' ? 'Раздел 03' : 'Section 03'}
           </h2>
           <div className={`mt-2.5 text-2xl sm:text-3xl font-[250] tracking-tight ${
             isDark ? 'text-white' : 'text-neutral-900'
           }`}>
-            {currentLang === 'ru' ? 'Статьи' : 'Articles'}
+            {currentLang === 'ru' ? 'Медиа' : 'Media'}
           </div>
         </div>
 

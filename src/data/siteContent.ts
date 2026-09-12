@@ -8,10 +8,9 @@ import {
 } from '../types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { id: 'about', labelRu: 'Обо мне', labelEn: 'About me' },
   { id: 'products', labelRu: 'Продукты', labelEn: 'Products' },
-  { id: 'conferences', labelRu: 'Конференции', labelEn: 'Conferences' },
   { id: 'articles', labelRu: 'Статьи', labelEn: 'Articles' },
+  { id: 'media', labelRu: 'Медиа', labelEn: 'Media' },
   { id: 'contact', labelRu: 'Контакты', labelEn: 'Contact' }
 ];
 

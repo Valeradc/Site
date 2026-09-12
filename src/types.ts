@@ -1,6 +1,6 @@
 export type Language = 'ru' | 'en';
 
-export type SectionId = 'industrial-creator' | 'about' | 'novosibirsk' | 'products' | 'conferences' | 'articles' | 'contact' | 'projects' | 'events';
+export type SectionId = 'industrial-creator' | 'products' | 'articles' | 'media' | 'contact';
 
 export interface NovosibirskLocation {
   id: string;
@@ -33,7 +33,7 @@ export interface NavItem {
 }
 
 export interface SectionBlueprint {
-  sectionId: SectionId;
+  sectionId: string;
   titleRu: string;
   titleEn: string;
   purposeRu: string;

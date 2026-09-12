@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({
                 : 'text-neutral-700 hover:text-neutral-950'
             }`}
           >
-            <span>{currentLang === 'ru' ? 'Смотреть проекты' : 'View projects'}</span>
+            <span>{currentLang === 'ru' ? 'Смотреть продукты' : 'View products'}</span>
             <ArrowDown className="w-4 h-4 stroke-[1.2]" />
           </button>
 

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
 import { ProductsSection } from './components/ProductsSection';
-import { EventsSection } from './components/EventsSection';
 import { ArticlesSection } from './components/ArticlesSection';
+import { MediaSection } from './components/MediaSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { Language, SectionId } from './types';
@@ -17,7 +16,7 @@ export default function App() {
   // Track active section on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections: SectionId[] = ['industrial-creator', 'about', 'products', 'conferences', 'articles', 'contact'];
+      const sections: SectionId[] = ['industrial-creator', 'products', 'articles', 'media', 'contact'];
       const scrollPosition = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -64,7 +63,7 @@ export default function App() {
         onToggleTheme={() => setIsDark(!isDark)}
       />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections in requested order */}
       <main>
         
         {/* 01. First Sheet: INDUSTRIAL CREATOR Centered */}
@@ -74,31 +73,25 @@ export default function App() {
           isDark={isDark}
         />
 
-        {/* 02. About Me: Обо мне */}
-        <AboutSection
-          currentLang={currentLang}
-          isDark={isDark}
-        />
-
-        {/* 03. Products: Продукты */}
+        {/* 02. Products: Продукты */}
         <ProductsSection
           currentLang={currentLang}
           isDark={isDark}
         />
 
-        {/* 04. Conferences: Конференции */}
-        <EventsSection
-          currentLang={currentLang}
-          isDark={isDark}
-        />
-
-        {/* 05. Articles: Статьи */}
+        {/* 03. Articles: Статьи */}
         <ArticlesSection
           currentLang={currentLang}
           isDark={isDark}
         />
 
-        {/* 06. Contact: Контакты */}
+        {/* 04. Media: Медиа */}
+        <MediaSection
+          currentLang={currentLang}
+          isDark={isDark}
+        />
+
+        {/* 05. Contact: Контакты */}
         <ContactSection
           currentLang={currentLang}
           isDark={isDark}
