@@ -34,12 +34,17 @@
     overflow-x: hidden;
   }
 
-  /* Smooth luxury theme transitions for colors and backgrounds */
-  html, body, div, header, footer, section, button, a, span, h1, h2, h3, p {
-    transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  /* High-performance GPU-friendly theme transitions */
+  html, body, #root, header, footer, section, button, a, h1, h2, h3, p {
+    transition-property: background-color, border-color, color;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  /* GPU composite layers for fluid animations on 60Hz & mobile devices */
+  header, footer, button, .smooth-layer {
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {

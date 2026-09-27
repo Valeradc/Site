@@ -73,8 +73,8 @@ export default function App() {
       />
 
       {/* Main Content with Smooth Language Crossfade Transition */}
-      <main className={`transition-opacity duration-200 ease-in-out ${
-        isLangTransitioning ? 'opacity-30' : 'opacity-100'
+      <main className={`transition-opacity duration-200 ease-in-out will-change-opacity ${
+        isLangTransitioning ? 'opacity-25' : 'opacity-100'
       }`}>
         
         {/* 01. First Sheet: INDUSTRIAL CREATOR Centered */}
