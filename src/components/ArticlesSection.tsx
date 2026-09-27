@@ -16,7 +16,7 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({
   return (
     <section 
       id="articles" 
-      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 snap-start snap-always overflow-hidden flex flex-col justify-between px-6 sm:px-8 py-6 sm:py-10 transition-colors duration-200 ${
+      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 overflow-hidden flex flex-col justify-between px-6 sm:px-8 py-6 sm:py-10 transition-colors duration-200 ${
         isDark ? 'bg-[#090a0f] text-white' : 'bg-white text-neutral-900'
       }`}
     >
@@ -41,14 +41,8 @@ export const ArticlesSection: React.FC<ArticlesSectionProps> = ({
         </span>
       </div>
 
-      {/* Minimalist Centered Status */}
-      <div className="flex flex-col items-center justify-center my-auto">
-        <span className={`text-sm sm:text-base font-[250] tracking-[0.2em] lowercase font-light select-none ${
-          isDark ? 'text-neutral-500' : 'text-neutral-400'
-        }`}>
-          {currentLang === 'ru' ? '«в разработке»' : '«in development»'}
-        </span>
-      </div>
+      {/* Center Spacer */}
+      <div className="my-auto" />
 
       {/* Bottom Hint to Next Section */}
       <div className="max-w-4xl mx-auto w-full flex items-center justify-end">

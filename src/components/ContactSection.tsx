@@ -1,27 +1,25 @@
 import React from 'react';
-import { Language, SectionId } from '../types';
+import { Language } from '../types';
 import { Footer } from './Footer';
 
 interface ContactSectionProps {
   currentLang: Language;
   isDark: boolean;
-  onNavigate?: (sectionId: SectionId) => void;
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   currentLang,
-  isDark,
-  onNavigate
+  isDark
 }) => {
   return (
     <section 
       id="contact" 
-      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 snap-start snap-always overflow-hidden flex flex-col justify-between px-6 sm:px-8 pt-6 sm:pt-10 pb-2 transition-colors duration-200 ${
+      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 overflow-hidden flex flex-col justify-between pt-6 sm:pt-10 pb-0 transition-colors duration-200 ${
         isDark ? 'bg-[#090a0f] text-white' : 'bg-white text-neutral-900'
       }`}
     >
       {/* Top Header Row */}
-      <div className="max-w-4xl mx-auto w-full flex items-center justify-between">
+      <div className="max-w-4xl mx-auto w-full px-6 sm:px-8 flex items-center justify-between">
         <div>
           <h2 className={`text-xs uppercase tracking-[0.25em] font-light ${
             isDark ? 'text-neutral-400' : 'text-neutral-500'
@@ -41,22 +39,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         </span>
       </div>
 
-      {/* Minimalist Centered Status */}
-      <div className="flex flex-col items-center justify-center my-auto">
-        <span className={`text-sm sm:text-base font-[250] tracking-[0.2em] lowercase font-light select-none ${
-          isDark ? 'text-neutral-500' : 'text-neutral-400'
-        }`}>
-          {currentLang === 'ru' ? '«в разработке»' : '«in development»'}
-        </span>
-      </div>
+      {/* Center Spacer */}
+      <div className="my-auto px-6 sm:px-8" />
 
-      {/* Bottom Integrated Footer Bar */}
-      <div className="max-w-4xl mx-auto w-full">
-        <Footer
-          currentLang={currentLang}
-          onNavigate={onNavigate || (() => {})}
-          isDark={isDark}
-        />
+      {/* Bottom Integrated Footer Bar (Full Screen Width) */}
+      <div className="w-full">
+        <Footer isDark={isDark} />
       </div>
     </section>
   );

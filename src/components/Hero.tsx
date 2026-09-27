@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({
   return (
     <section 
       id="industrial-creator" 
-      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 snap-start snap-always overflow-hidden flex flex-col items-center justify-between text-center px-6 py-6 sm:py-10 transition-colors duration-200 ${
+      className={`h-[calc(100vh-3.5rem)] h-[calc(100dvh-3.5rem)] max-h-[calc(100dvh-3.5rem)] scroll-mt-14 overflow-hidden flex flex-col items-center justify-between text-center px-6 py-6 sm:py-10 transition-colors duration-200 ${
         isDark 
           ? 'bg-[#090a0f] text-white' 
           : 'bg-white text-neutral-900'
@@ -51,16 +51,16 @@ export const Hero: React.FC<HeroProps> = ({
             <span>{currentLang === 'ru' ? 'Связаться' : 'Get in touch'}</span>
           </button>
 
-          {/* Clean "Смотреть продукты ↓" Link */}
+          {/* Clean "Смотреть сайт ↓" Link */}
           <button
-            onClick={() => onNavigate('products')}
+            onClick={() => onNavigate('about-project')}
             className={`text-sm sm:text-base font-light tracking-wide transition-colors flex items-center gap-1.5 ${
               isDark 
                 ? 'text-neutral-300 hover:text-white' 
                 : 'text-neutral-700 hover:text-neutral-950'
             }`}
           >
-            <span>{currentLang === 'ru' ? 'Смотреть продукты' : 'View products'}</span>
+            <span>{currentLang === 'ru' ? 'Смотреть сайт' : 'View site'}</span>
             <ArrowDown className="w-4 h-4 stroke-[1.2]" />
           </button>
 
@@ -68,17 +68,8 @@ export const Hero: React.FC<HeroProps> = ({
 
       </div>
 
-      {/* Subtle bottom indicator to guide user downwards */}
-      <button 
-        onClick={() => onNavigate('products')}
-        className={`pb-2 text-xs font-light tracking-[0.2em] uppercase flex items-center gap-2 transition-opacity hover:opacity-100 ${
-          isDark ? 'text-neutral-500 hover:text-neutral-300' : 'text-neutral-400 hover:text-neutral-700'
-        }`}
-        aria-label={currentLang === 'ru' ? 'Вниз к продуктам' : 'Down to products'}
-      >
-        <span>{currentLang === 'ru' ? 'Продукты' : 'Products'}</span>
-        <ArrowDown className="w-3.5 h-3.5 stroke-[1.2] animate-bounce" />
-      </button>
+      {/* Bottom spacer to keep perfect vertical balance */}
+      <div className="h-6 sm:h-10 invisible" aria-hidden="true" />
     </section>
   );
 };

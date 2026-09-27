@@ -19,8 +19,6 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     letter-spacing: -0.01em;
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
     background-color: #ffffff;
     color: #171717;
   }
@@ -36,9 +34,12 @@
     overflow-x: hidden;
   }
 
-  section {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  /* Smooth luxury theme transitions for colors and backgrounds */
+  html, body, div, header, footer, section, button, a, span, h1, h2, h3, p {
+    transition: background-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.45s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   h1, h2, h3, h4, h5, h6 {

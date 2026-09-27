@@ -1,6 +1,6 @@
 export type Language = 'ru' | 'en';
 
-export type SectionId = 'industrial-creator' | 'products' | 'articles' | 'media' | 'contact';
+export type SectionId = 'industrial-creator' | 'about-project' | 'articles' | 'media' | 'contact';
 
 export interface NovosibirskLocation {
   id: string;

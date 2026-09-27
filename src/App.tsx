@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { ProductsSection } from './components/ProductsSection';
+import { AboutProjectSection } from './components/AboutProjectSection';
 import { ArticlesSection } from './components/ArticlesSection';
 import { MediaSection } from './components/MediaSection';
 import { ContactSection } from './components/ContactSection';
 import { Language, SectionId } from './types';
+import { scrollToSection } from './utils/scroll';
 
 export default function App() {
   const [currentLang, setCurrentLang] = useState<Language>('ru');
+  const [isLangTransitioning, setIsLangTransitioning] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<SectionId>('industrial-creator');
   const [isDark, setIsDark] = useState<boolean>(false);
 
-  // Track active section using IntersectionObserver for precise slide detection
+  // Track active section using IntersectionObserver
   useEffect(() => {
-    const sections: SectionId[] = ['industrial-creator', 'products', 'articles', 'media', 'contact'];
+    const sections: SectionId[] = ['industrial-creator', 'about-project', 'articles', 'media', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -24,7 +26,7 @@ export default function App() {
         });
       },
       {
-        threshold: 0.5,
+        threshold: 0.45,
       }
     );
 
@@ -38,20 +40,25 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+  // Smooth fade language toggle
   const handleToggleLang = () => {
-    setCurrentLang(prev => (prev === 'ru' ? 'en' : 'ru'));
+    setIsLangTransitioning(true);
+    setTimeout(() => {
+      setCurrentLang(prev => (prev === 'ru' ? 'en' : 'ru'));
+      setTimeout(() => {
+        setIsLangTransitioning(false);
+      }, 60);
+    }, 150);
   };
 
+  // Ultra-smooth easing scroll to section
   const handleNavigate = (sectionId: SectionId) => {
     setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToSection(sectionId, 850);
   };
 
   return (
-    <div className={`min-h-screen transition-colors duration-200 font-sans ${
+    <div className={`min-h-screen font-sans ${
       isDark ? 'bg-[#090a0f] text-white' : 'bg-white text-neutral-900'
     }`}>
       
@@ -65,8 +72,10 @@ export default function App() {
         onToggleTheme={() => setIsDark(!isDark)}
       />
 
-      {/* Main Content: Exactly 5 Full-Screen Cells */}
-      <main>
+      {/* Main Content with Smooth Language Crossfade Transition */}
+      <main className={`transition-opacity duration-200 ease-in-out ${
+        isLangTransitioning ? 'opacity-30' : 'opacity-100'
+      }`}>
         
         {/* 01. First Sheet: INDUSTRIAL CREATOR Centered */}
         <Hero
@@ -75,8 +84,8 @@ export default function App() {
           isDark={isDark}
         />
 
-        {/* 02. Products: Продукты */}
-        <ProductsSection
+        {/* 02. About Project: О проекте */}
+        <AboutProjectSection
           currentLang={currentLang}
           isDark={isDark}
           onNavigate={handleNavigate}
@@ -96,11 +105,10 @@ export default function App() {
           onNavigate={handleNavigate}
         />
 
-        {/* 05. Contact: Контакты (with integrated bottom footer bar) */}
+        {/* 05. Contact: Контакты (with integrated full-width bottom footer bar) */}
         <ContactSection
           currentLang={currentLang}
           isDark={isDark}
-          onNavigate={handleNavigate}
         />
 
       </main>
