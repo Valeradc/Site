@@ -11,7 +11,6 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({
   currentLang,
-  onNavigate,
   isDark
 }) => {
   const scrollToTop = () => {
@@ -19,44 +18,34 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className={`border-t py-12 text-xs font-light transition-colors duration-200 ${
-      isDark ? 'border-neutral-800 bg-[#07080b] text-neutral-400' : 'border-neutral-200 bg-neutral-50 text-neutral-500'
+    <footer className={`w-full border-t py-3.5 text-xs font-light transition-colors duration-200 ${
+      isDark ? 'border-neutral-800 text-neutral-400' : 'border-neutral-200 text-neutral-500'
     }`}>
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="max-w-4xl mx-auto flex flex-row items-center justify-between gap-4">
         
         {/* Brand & Name */}
-        <div className="space-y-1 text-center sm:text-left">
-          <div className={`text-sm uppercase tracking-[0.18em] font-[250] ${isDark ? 'text-white' : 'text-neutral-900'}`}>
+        <div className="flex items-center gap-2 sm:gap-3 text-left">
+          <span className={`text-xs uppercase tracking-[0.16em] font-[250] ${isDark ? 'text-white' : 'text-neutral-900'}`}>
             INDUSTRIAL CREATOR
-          </div>
-          <div className="text-xs font-light">
-            {currentLang === 'ru' ? GENERAL_INFO.nameRu : GENERAL_INFO.nameEn} • {currentLang === 'ru' ? 'Новосибирск' : 'Novosibirsk'}
-          </div>
+          </span>
+          <span className="opacity-30">•</span>
+          <span className="text-[11px] sm:text-xs">
+            {currentLang === 'ru' ? GENERAL_INFO.nameRu : GENERAL_INFO.nameEn}
+          </span>
+          <span className="hidden sm:inline opacity-30">•</span>
+          <span className="hidden sm:inline text-neutral-400 text-[11px]">
+            {currentLang === 'ru' ? 'Новосибирск' : 'Novosibirsk'}
+          </span>
         </div>
 
-        {/* Navigation links */}
-        <div className="flex flex-wrap items-center justify-center gap-6">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className={`transition-colors font-light ${
-                isDark ? 'hover:text-white' : 'hover:text-neutral-950'
-              }`}
-            >
-              {currentLang === 'ru' ? item.labelRu : item.labelEn}
-            </button>
-          ))}
-        </div>
-
-        {/* Back to top */}
+        {/* Back to top button */}
         <button
           onClick={scrollToTop}
-          className={`p-2 rounded-full border transition-all active:scale-95 ${
+          className={`p-1.5 rounded-full border transition-all active:scale-95 flex-shrink-0 ${
             isDark ? 'border-neutral-800 hover:bg-neutral-800 text-neutral-300' : 'border-neutral-200 hover:bg-neutral-100 text-neutral-600'
           }`}
-          aria-label="Наверх"
-          title="Наверх"
+          aria-label={currentLang === 'ru' ? 'Наверх' : 'To top'}
+          title={currentLang === 'ru' ? 'Наверх' : 'To top'}
         >
           <ArrowUp className="w-3.5 h-3.5 stroke-[1.2]" />
         </button>

@@ -5,7 +5,6 @@ import { ProductsSection } from './components/ProductsSection';
 import { ArticlesSection } from './components/ArticlesSection';
 import { MediaSection } from './components/MediaSection';
 import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
 import { Language, SectionId } from './types';
 
 export default function App() {
@@ -13,27 +12,30 @@ export default function App() {
   const [activeSection, setActiveSection] = useState<SectionId>('industrial-creator');
   const [isDark, setIsDark] = useState<boolean>(false);
 
-  // Track active section on scroll
+  // Track active section using IntersectionObserver for precise slide detection
   useEffect(() => {
-    const handleScroll = () => {
-      const sections: SectionId[] = ['industrial-creator', 'products', 'articles', 'media', 'contact'];
-      const scrollPosition = window.scrollY + 200;
-
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
+    const sections: SectionId[] = ['industrial-creator', 'products', 'articles', 'media', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id as SectionId);
           }
-        }
+        });
+      },
+      {
+        threshold: 0.5,
       }
-    };
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    sections.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const handleToggleLang = () => {
@@ -53,7 +55,7 @@ export default function App() {
       isDark ? 'bg-[#090a0f] text-white' : 'bg-white text-neutral-900'
     }`}>
       
-      {/* Top Header */}
+      {/* Top Fixed-Height Header (56px / h-14) */}
       <Header
         currentLang={currentLang}
         onToggleLang={handleToggleLang}
@@ -63,7 +65,7 @@ export default function App() {
         onToggleTheme={() => setIsDark(!isDark)}
       />
 
-      {/* Main Content Sections in requested order */}
+      {/* Main Content: Exactly 5 Full-Screen Cells */}
       <main>
         
         {/* 01. First Sheet: INDUSTRIAL CREATOR Centered */}
@@ -77,34 +79,31 @@ export default function App() {
         <ProductsSection
           currentLang={currentLang}
           isDark={isDark}
+          onNavigate={handleNavigate}
         />
 
         {/* 03. Articles: Статьи */}
         <ArticlesSection
           currentLang={currentLang}
           isDark={isDark}
+          onNavigate={handleNavigate}
         />
 
         {/* 04. Media: Медиа */}
         <MediaSection
           currentLang={currentLang}
           isDark={isDark}
+          onNavigate={handleNavigate}
         />
 
-        {/* 05. Contact: Контакты */}
+        {/* 05. Contact: Контакты (with integrated bottom footer bar) */}
         <ContactSection
           currentLang={currentLang}
           isDark={isDark}
+          onNavigate={handleNavigate}
         />
 
       </main>
-
-      {/* Footer */}
-      <Footer
-        currentLang={currentLang}
-        onNavigate={handleNavigate}
-        isDark={isDark}
-      />
 
     </div>
   );
